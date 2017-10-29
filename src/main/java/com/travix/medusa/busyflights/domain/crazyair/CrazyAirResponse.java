@@ -1,6 +1,8 @@
 package com.travix.medusa.busyflights.domain.crazyair;
 
-public class CrazyAirResponse {
+import com.travix.medusa.busyflights.service.UnderlyingApiResponse;
+
+public class CrazyAirResponse implements UnderlyingApiResponse {
 
     private String airline;
     private double price;
@@ -10,7 +12,22 @@ public class CrazyAirResponse {
     private String departureDate;
     private String arrivalDate;
 
-    public String getAirline() {
+    public CrazyAirResponse() {
+	}
+    
+    public CrazyAirResponse(String airline, double price, String cabinclass, String departureAirportCode,
+			String destinationAirportCode, String departureDate, String arrivalDate) {
+		super();
+		this.airline = airline;
+		this.price = price;
+		this.cabinclass = cabinclass;
+		this.departureAirportCode = departureAirportCode;
+		this.destinationAirportCode = destinationAirportCode;
+		this.departureDate = departureDate;
+		this.arrivalDate = arrivalDate;
+	}
+
+	public String getAirline() {
         return airline;
     }
 

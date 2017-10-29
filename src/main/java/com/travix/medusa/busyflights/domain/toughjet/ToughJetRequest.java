@@ -1,6 +1,9 @@
 package com.travix.medusa.busyflights.domain.toughjet;
 
-public class ToughJetRequest {
+import com.travix.medusa.busyflights.domain.busyflights.BusyFlightsRequest;
+import com.travix.medusa.busyflights.service.UnderlyingApiRequest;
+
+public class ToughJetRequest implements UnderlyingApiRequest {
 
     private String from;
     private String to;
@@ -8,7 +11,18 @@ public class ToughJetRequest {
     private String inboundDate;
     private int numberOfAdults;
 
-    public String getFrom() {
+    public ToughJetRequest() {
+	}
+    
+    public ToughJetRequest(BusyFlightsRequest request) {
+    	this.from = request.getOrigin();
+    	this.to = request.getDestination();
+    	this.outboundDate = request.getDepartureDate();
+    	this.inboundDate = request.getReturnDate();
+    	this.numberOfAdults = request.getNumberOfPassengers();
+	}
+
+	public String getFrom() {
         return from;
     }
 
